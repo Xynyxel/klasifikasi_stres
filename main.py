@@ -8,5 +8,5 @@ def read_root():
 
 
 @app.get("/test")
-def read_root():
+def read_test():
     return {"Hello": "test"}
