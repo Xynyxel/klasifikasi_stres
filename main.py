@@ -26,9 +26,9 @@ def get_db():
 model = xgb.XGBClassifier()
 model.load_model("model.json")
 
-@app.get("/")
-def read_root():
-    return {"Hello": "World"}
+# @app.get("/")
+# def read_root():
+#     return {"Hello": "World"}
 
 @app.get("/test")
 def test(db: Session = Depends(get_db)):
@@ -39,4 +39,8 @@ def test(db: Session = Depends(get_db)):
     result = result.tolist()
     result = ceklabelstres(result)
     return result
+
+@app.get("/")
+def get_data_pasien(db: Session = Depends(get_db)):
+    return db.query(models.Pasien).all()
 
