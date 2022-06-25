@@ -1,4 +1,3 @@
-from tokenize import String
 from fastapi import FastAPI, HTTPException, Depends
 import uvicorn 
 import xgboost as xgb
