@@ -11,3 +11,6 @@ def read_root():
 def read_test():
     return {"Hello": "test"}
 
+@app.get("/lagi")
+def read_test():
+    return {"Hello": "lagi"}
