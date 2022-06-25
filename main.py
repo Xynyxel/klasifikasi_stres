@@ -22,3 +22,7 @@ def read_test():
 @app.get("/lah")
 def read_test():
     return {"Hello": "lah"}
+
+@app.get("/capek")
+def read_test():
+    return {"Hello": "capek"}
