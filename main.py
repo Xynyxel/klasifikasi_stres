@@ -14,3 +14,7 @@ def read_test():
 @app.get("/lagi")
 def read_test():
     return {"Hello": "lagi"}
+
+@app.get("/satu_lagi")
+def read_test():
+    return {"Hello": "satu_lagi"}
