@@ -90,7 +90,7 @@ def update_data_pasien(pasien_id: int, pasien: Pasien, db : Session = Depends(ge
     return f"Pasien with id : {pasien_id} : Successfuly updated"
 
 @app.put("/nama/{pasien_id}")
-def update_data_nama_pasien(pasien_id: int, pasien: Pasien, db : Session = Depends(get_db)):
+def update_data_nama_pasien(pasien_id: int, pasien: Pasien_Name, db : Session = Depends(get_db)):
     pasien_model = db.query(models.Pasien).filter(models.Pasien.id_pasien == pasien_id).first()
     if pasien_model is None :
         raise HTTPException(
