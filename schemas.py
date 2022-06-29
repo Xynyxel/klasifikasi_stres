@@ -16,7 +16,6 @@ class Pasien(BaseModel):
 class Pasien_Login(BaseModel):
     email: str = Field(min_length=1)
     password: str = Field(min_length=1)
-    confirm_password : str = Field(min_length=1)
 
     class Config:
         orm_mode = True

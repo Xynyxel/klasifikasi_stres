@@ -57,7 +57,7 @@ def create_data_pasien(pasien: Pasien, db:Session = Depends(get_db)):
     return pasien
 
 @app.post("/login")
-def create_login_data_pasien(pasien_login : Pasien, db:Session = Depends(get_db)):
+def create_login_data_pasien(pasien_login : Pasien_Login, db:Session = Depends(get_db)):
     pasien_model = db.query(models.Pasien).filter(models.Pasien.email == pasien_login.email and models.Pasien.password == pasien_login.password).first()
     if pasien_model is None :
             raise HTTPException(
