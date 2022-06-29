@@ -26,9 +26,9 @@ def get_db():
 model = xgb.XGBClassifier()
 model.load_model("model.json")
 
-# @app.get("/")
-# def read_root():
-#     return {"Hello": "World"}
+@app.get("/hallo")
+def read_root():
+    return {"Hello": "World"}
 
 @app.get("/test")
 def test(db: Session = Depends(get_db)):
