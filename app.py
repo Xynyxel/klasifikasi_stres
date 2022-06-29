@@ -63,7 +63,7 @@ def create_data_pasien(pasien: Pasien, db:Session = Depends(get_db)):
 
     db.add(pasien_model)
     db.commit()
-    return pasien
+    return type(pasien_model)
 
 @app.post("/login")
 def create_login_data_pasien(pasien_login : Pasien_Login, db:Session = Depends(get_db)):
@@ -97,6 +97,7 @@ def update_data_pasien(pasien_id: int, pasien: Pasien, db : Session = Depends(ge
     db.add(pasien_model)
     db.commit()
     return f"Pasien with id : {pasien_id} : Successfuly updated"
+
 
 @app.delete("/{pasien_id}")
 def delete_data_pasien(pasien_id: int, db: Session = Depends(get_db)):
