@@ -101,8 +101,7 @@ def update_data_nama_pasien(pasien_id: int, pasien: Pasien_Name, db : Session = 
     db.add(pasien_model)
     db.commit()
     
-    # return f"Pasien with id : {pasien_id} : Successfuly updated. {pasien_model}" 
-    return type(pasien_model)
+    return f"Pasien with id : {pasien_id} : Successfuly updated. {type(pasien_model)}"
 
 @app.delete("/{pasien_id}")
 def delete_data_pasien(pasien_id: int, db: Session = Depends(get_db)):
