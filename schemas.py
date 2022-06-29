@@ -36,3 +36,6 @@ class Kriteria(BaseModel):
 class Pasien_Name(BaseModel):
     name: str
 
+    class Config:
+        orm_mode = True
+
