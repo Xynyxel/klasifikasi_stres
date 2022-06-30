@@ -8,11 +8,11 @@ def onMessage(client, userdata, msg):
 client = paho.Client()
 client.on_message = onMessage
 
-if client.connect("localhost", 1883, 60) != 0:
+if client.connect("139.59.236.46", 1883, 60) != 0:
     print("Could not connect to MQTT Broker!")
     sys.exit(-1)
 
-client.subscribe("test/status")
+client.subscribe("building/nama")
 
 try:
     print("Press CTRL+C to exit...")
