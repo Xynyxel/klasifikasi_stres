@@ -36,10 +36,10 @@ import paho.mqtt.client as mqtt
 import time
 
 
-def write_data(data):
-    with open('test.txt', 'w', encoding='utf-8') as f:
-        f.write(data)
-    print("berhasil")
+# def write_data(data):
+#     with open('test.txt', 'w', encoding='utf-8') as f:
+#         f.write(data)
+#     print("berhasil")
 
 def on_connect(client, userdata, flags, rc):
     print("Connected with result code " + str(rc))
@@ -53,11 +53,11 @@ def on_connect(client, userdata, flags, rc):
 def on_message(client, userdata, message):
     data = str(message.payload.decode())
     # print(msg.topic + ": " + data)
-    write_data(data)
+    # write_data(data)
     # print("Message received: " + message.topic + " : " + str(message.payload))
-    # if message.topic == 'ep_mqtt/topic2':
-    #     with open('/home/pi/mqtt_update.txt', 'a+') as f:
-    #         f.write("received topic2")
+    if message.topic == 'test/test':
+        with open('/home/mqtt_update.txt', 'a+') as f:
+            f.write("received topic2")
 
 
 broker_address = "139.59.236.46"  # Broker address
