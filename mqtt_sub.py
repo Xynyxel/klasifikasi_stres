@@ -13,6 +13,7 @@ if client.connect("139.59.236.46", 1883, 60) != 0:
     sys.exit(-1)
 
 client.subscribe("building/nama")
+client.subscribe("building/SP02")
 
 try:
     print("Press CTRL+C to exit...")
