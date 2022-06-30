@@ -4,5 +4,3 @@
 #     f.write(quote)
     
 
-f = open("test.txt", "r")
-f.readline()
