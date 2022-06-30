@@ -1,10 +1,6 @@
 import paho.mqtt.client as paho
 import sys
 
-# quote = '成功を収める人とは人が投げてきたレンガでしっかりした基盤を築くことができる人のことである。'
-
-# with open('test.txt', 'w', encoding='utf-8') as f:
-#     f.write(quote)
 def write_data(data):
     with open('test.txt', 'w', encoding='utf-8') as f:
         f.write(data)
