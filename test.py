@@ -2,4 +2,4 @@ quote = '成功を収める人とは人が投げてきたレンガでしっか�
 
 with open('test.txt', 'w', encoding='utf-8') as f:
     f.write(quote)
-    f.readlines()
+    f.readline()
