@@ -5,7 +5,7 @@ def onMessage(client, userdata, msg):
     print(client)
     print(userdata)
     print(msg.topic + ": " + msg.payload.decode())
-    print(msg.topic + ": " + type(msg.payload.decode()))
+    print(msg.topic + ": " + msg.payload.decode())
     # print(msg.topic + ": " + type(data))
 
 client = paho.Client()
