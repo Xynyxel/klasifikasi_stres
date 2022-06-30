@@ -30,5 +30,5 @@ try:
     client.loop_forever()
 except:
     print("Disconnection from broker")
+    client.disconnect()
 
-client.disconnect()
