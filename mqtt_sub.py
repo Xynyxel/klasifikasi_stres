@@ -4,6 +4,7 @@ import sys
 def onMessage(client, userdata, msg):
     data = msg.payload.decode()
     print(msg.topic + ": " + data)
+    print(msg.topic + ": " + type(data))
 
 client = paho.Client()
 client.on_message = onMessage
