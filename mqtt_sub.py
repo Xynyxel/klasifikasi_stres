@@ -2,8 +2,8 @@ import paho.mqtt.client as paho
 import sys
 
 def onMessage(client, userdata, msg):
-    
-    print(msg.topic + ": " + msg.payload.decode())
+    data = msg.payload.decode()
+    print(msg.topic + ": " + data)
 
 client = paho.Client()
 client.on_message = onMessage
