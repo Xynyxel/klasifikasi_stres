@@ -3,9 +3,11 @@ import sys
 
 client = paho.Client()
 
-if client.connect("139.59.236.46", 1883, 60) == 0:
+if client.connect("139.59.236.46", 1883, 60) != 0:
     print("Could not connect to MQTT Broker!")
     sys.exit(-1)
+else:
+    print("MQTT Broker! berhasil connect")
 
 
 client.publish("test/test", "test111", 0)
