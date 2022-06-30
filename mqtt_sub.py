@@ -11,8 +11,10 @@ def write_data(data):
     print("berhasil")
 
 def onMessage(client, userdata, msg):
-    print(msg.topic + ": " + msg.payload.decode())
-    write_data(msg.payload.decode())
+    data = str(msg.payload.decode())
+    print(msg.topic + ": " + data)
+    write_data(data)
+    
     # print(msg.topic + ": " + type(data))
 
 client = paho.Client()
