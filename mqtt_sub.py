@@ -15,6 +15,7 @@ if client.connect("139.59.236.46", 1883, 60) != 0:
 
 client.subscribe("building/nama")
 client.subscribe("building/SPO2")
+client.subscribe("building/SPO2_csv")
 
 try:
     print("Press CTRL+C to exit...")
