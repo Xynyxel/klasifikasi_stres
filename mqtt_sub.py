@@ -57,7 +57,7 @@ def on_message(client, userdata, message):
     # print("Message received: " + message.topic + " : " + str(message.payload))
     if message.topic == 'test/test':
         with open('/home/mqtt_update.txt', 'a+') as f:
-            f.write("received topic2")
+            f.write(data)
 
 
 broker_address = "139.59.236.46"  # Broker address
