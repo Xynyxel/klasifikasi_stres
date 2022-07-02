@@ -117,7 +117,7 @@ def get_data_kriteria_pasien(db: Session = Depends(get_db)):
 
 @app.get("/kriteria_pasien/{pasien_id}")
 def get_data_kriteria_pasien_byidpasien(pasien_id: int, db: Session = Depends(get_db)):
-    kriteria_pasien = db.query(models.Kriteria).db.query(models.Kriteria).filter(models.Kriteria.id_pasien == pasien_id).first()
+    kriteria_pasien = db.query(models.Kriteria).filter(models.Kriteria.id_pasien == pasien_id).first()
 
     if kriteria_pasien is None:
         raise HTTPException(
