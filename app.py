@@ -130,6 +130,10 @@ def delete_data_pasien(pasien_id: int, db: Session = Depends(get_db)):
 def get_data_kriteria_pasien(db: Session = Depends(get_db)):
     return db.query(models.Kriteria).all()
 
+@app.get("/kriteria_pasien/{pasien_id}")
+def get_data_kriteria_pasien_byid(kriteria_id: int, db: Session = Depends(get_db)):
+    return db.query(models.Kriteria).db.query(models.Kriteria).filter(models.Kriteria.id_kriteria == kriteria_id).first()
+
 @app.post("/kriteria_pasien")
 def create_data_kriteria_pasien(pasien_kriteria: Kriteria, db:Session = Depends(get_db)):
     
