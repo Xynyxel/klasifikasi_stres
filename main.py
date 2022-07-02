@@ -83,19 +83,18 @@ def update_data_pasien(pasien_id: int, pasien: Pasien, db : Session = Depends(ge
     db.commit()
     return f"Pasien with id : {pasien_id} : Successfuly updated"
 
-@app.put("/nama/{pasien_id}")
-def update_data_nama_pasien(pasien_id: int, pasien: Pasien_Name, db : Session = Depends(get_db)):
+@app.put("/{pasien_id}")
+def update_data_password_pasien(pasien_id: int, pasien: Pasien, db : Session = Depends(get_db)):
     pasien_model = db.query(models.Pasien).filter(models.Pasien.id_pasien == pasien_id).first()
     if pasien_model is None :
         raise HTTPException(
             status_code = 404,
             detail = f"Pasien ID {pasien_id} : Does not exist"
         )
-    pasien_model.name = pasien.name
+    pasien_model.password = pasien.password
     db.add(pasien_model)
     db.commit()
-    
-    return f"Pasien with id : {pasien_id} : Successfuly updated."
+    return f"Pasien with id : {pasien_id} : Successfuly updated"
 
 @app.delete("/{pasien_id}")
 def delete_data_pasien(pasien_id: int, db: Session = Depends(get_db)):
@@ -115,6 +114,10 @@ def delete_data_pasien(pasien_id: int, db: Session = Depends(get_db)):
 @app.get("/kriteria_pasien")
 def get_data_kriteria_pasien(db: Session = Depends(get_db)):
     return db.query(models.Kriteria).all()
+
+@app.get("/kriteria_pasien/{pasien_id}")
+def get_data_kriteria_pasien_byid(kriteria_id: int, db: Session = Depends(get_db)):
+    return db.query(models.Kriteria).db.query(models.Kriteria).filter(models.Kriteria.id_kriteria == kriteria_id).first()
 
 @app.post("/kriteria_pasien")
 def create_data_kriteria_pasien(pasien_kriteria: Kriteria, db:Session = Depends(get_db)):
