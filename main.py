@@ -115,9 +115,20 @@ def delete_data_pasien(pasien_id: int, db: Session = Depends(get_db)):
 def get_data_kriteria_pasien(db: Session = Depends(get_db)):
     return db.query(models.Kriteria).all()
 
+@app.get("/kriteria_pasien_last/{pasien_id}")
+def get_data_kriteria_pasien_byidpasien_last(pasien_id: int, db: Session = Depends(get_db)):
+    kriteria_pasien = db.query(models.Kriteria).filter(models.Kriteria.id_pasien == pasien_id).order_by(models.Kriteria.id_kriteria.desc()).first()
+
+    if kriteria_pasien is None:
+        raise HTTPException(
+            status_code = 404,
+            detail = f"Kriteria Pasien with id : {pasien_id} : Does not exist"
+        )
+    return kriteria_pasien
+
 @app.get("/kriteria_pasien/{pasien_id}")
 def get_data_kriteria_pasien_byidpasien(pasien_id: int, db: Session = Depends(get_db)):
-    kriteria_pasien = db.query(models.Kriteria).filter(models.Kriteria.id_pasien == pasien_id).order_by(models.Kriteria.id_kriteria.desc()).first()
+    kriteria_pasien = db.query(models.Kriteria).filter(models.Kriteria.id_pasien == pasien_id).all()
 
     if kriteria_pasien is None:
         raise HTTPException(
