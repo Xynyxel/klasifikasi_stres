@@ -141,8 +141,6 @@ def get_data_kriteria_pasien_byidpasien(pasien_id: int, db: Session = Depends(ge
 def create_data_kriteria_pasien(pasien_kriteria: Kriteria, db:Session = Depends(get_db)):
     
     pasien_kriteria_model = models.Kriteria()
-
-
     pasien_kriteria_model.gsr = pasien_kriteria.gsr
     pasien_kriteria_model.hr = pasien_kriteria.hr
     pasien_kriteria_model.bp = pasien_kriteria.bp
@@ -150,14 +148,18 @@ def create_data_kriteria_pasien(pasien_kriteria: Kriteria, db:Session = Depends(
     pasien_kriteria_model.respirasi = pasien_kriteria.respirasi
     pasien_kriteria_model.id_pasien = pasien_kriteria.id_pasien
 
-    
-    
+    # pasien_kriteria_model.gsr = 3
+    # pasien_kriteria_model.hr = 70
+    # pasien_kriteria_model.bp = "110/79"
+    # pasien_kriteria_model.suhu = 37
+    # pasien_kriteria_model.respirasi = 18
+    # pasien_kriteria_model.id_pasien = pasien_kriteria.id_pasien
 
-    data = {'GSR_label': ceklabelGSRintoModel(pasien_kriteria.gsr), 
-            'HR_label': ceklabelHRintoModel(pasien_kriteria.hr), 
-            'BP_label': ceklabelBPintoModel(pasien_kriteria.bp), 
-            'SUHU_label':ceklabelSUHUintoModel(pasien_kriteria.suhu), 
-            'RESPIRASI_label':ceklabelRESPIRASIintoModel(pasien_kriteria.respirasi)}
+    data = {'GSR_label': ceklabelGSRintoModel(pasien_kriteria_model.gsr), 
+            'HR_label': ceklabelHRintoModel(pasien_kriteria_model.hr), 
+            'BP_label': ceklabelBPintoModel(pasien_kriteria_model.bp), 
+            'SUHU_label':ceklabelSUHUintoModel(pasien_kriteria_model.suhu), 
+            'RESPIRASI_label':ceklabelRESPIRASIintoModel(pasien_kriteria_model.respirasi)}
 
     return data
     # # Create DataFrame.
@@ -171,6 +173,7 @@ def create_data_kriteria_pasien(pasien_kriteria: Kriteria, db:Session = Depends(
     db.add(pasien_kriteria_model)
     db.commit()
     return pasien_kriteria_model
+
 
 @app.put("/kriteria_pasien/{kriteria_id}")
 def update_data_kriteria_pasien(kriteria_id: int, pasien_kriteria: Kriteria, db : Session = Depends(get_db)):
