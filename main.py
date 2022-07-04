@@ -174,7 +174,7 @@ def create_data_kriteria_pasien(pasien_kriteria: Kriteria, db:Session = Depends(
     # db.commit()
     # return pasien_kriteria_model
 
-@app.get("/kriteria_pasien/check")
+@app.get("/check")
 def check():
 
     # data = {'GSR_label': ceklabelGSRintoModel(3), 
