@@ -156,11 +156,11 @@ def create_data_kriteria_pasien(pasien_kriteria: Kriteria, db:Session = Depends(
     # pasien_kriteria_model.respirasi = 18
     # pasien_kriteria_model.id_pasien = pasien_kriteria.id_pasien
 
-    data = {'GSR_label': ceklabelGSRintoModel(pasien_kriteria_model.gsr), 
-            'HR_label': ceklabelHRintoModel(pasien_kriteria_model.hr), 
-            'BP_label': ceklabelBPintoModel(pasien_kriteria_model.bp), 
-            'SUHU_label':ceklabelSUHUintoModel(pasien_kriteria_model.suhu), 
-            'RESPIRASI_label':ceklabelRESPIRASIintoModel(pasien_kriteria_model.respirasi)}
+    data = {'GSR_label': [ceklabelGSRintoModel(pasien_kriteria_model.gsr)], 
+            'HR_label': [ceklabelHRintoModel(pasien_kriteria_model.hr)], 
+            'BP_label': [ceklabelBPintoModel(pasien_kriteria_model.bp)], 
+            'SUHU_label':[ceklabelSUHUintoModel(pasien_kriteria_model.suhu)], 
+            'RESPIRASI_label':[ceklabelRESPIRASIintoModel(pasien_kriteria_model.respirasi)]}
 
 
     # Create DataFrame.
@@ -168,12 +168,12 @@ def create_data_kriteria_pasien(pasien_kriteria: Kriteria, db:Session = Depends(
     result = model.predict(df)
     result = result.tolist()
     result = ceklabelstres(result)
-    return result
-    # pasien_kriteria_model.tingkat_stress = result[0]
+   
+    pasien_kriteria_model.tingkat_stress = result[0]
 
-    # db.add(pasien_kriteria_model)
-    # db.commit()
-    # return f"Kriteria Pasien with id : {pasien_kriteria_model.id_pasien} : Successfuly added"
+    db.add(pasien_kriteria_model)
+    db.commit()
+    return f"Kriteria Pasien with id : {pasien_kriteria_model.id_pasien} : Successfuly added"
 
 
 @app.put("/kriteria_pasien/{kriteria_id}")
