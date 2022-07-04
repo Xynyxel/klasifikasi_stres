@@ -175,7 +175,7 @@ def create_data_kriteria_pasien(pasien_kriteria: Kriteria, db:Session = Depends(
     # return pasien_kriteria_model
 
 @app.get("/kriteria_pasien/check")
-def check(db:Session = Depends(get_db)):
+def check():
 
     data = {'GSR_label': ceklabelGSRintoModel(3), 
             'HR_label': ceklabelHRintoModel(70), 
