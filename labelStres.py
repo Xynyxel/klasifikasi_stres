@@ -78,7 +78,7 @@ def ceklabelSUHUintoModel(suhu):
         return 0
     elif suhu >= 35 and suhu < 36:
         return 1
-    elif suhu >= 36 and suhu < 37:
+    elif suhu >= 36 and suhu <= 37:
         return 2
     elif suhu < 33:
         return 3
@@ -92,11 +92,11 @@ def ceklabelRESPIRASI(labellist):
     return result_list
 
 def ceklabelRESPIRASIintoModel(respirasi):
-    if respirasi >= 16 and respirasi < 18 :
+    if respirasi >= 16 and respirasi <= 18 :
         return 0
-    elif respirasi >= 19 and respirasi < 20:
+    elif respirasi >= 19 and respirasi <= 20:
         return 1
-    elif respirasi >= 20:
+    elif respirasi > 20:
         return 2
     return -1
 
