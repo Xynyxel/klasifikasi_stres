@@ -159,6 +159,7 @@ def create_data_kriteria_pasien(pasien_kriteria: Kriteria, db:Session = Depends(
             'SUHU_label':ceklabelSUHUintoModel(pasien_kriteria.suhu), 
             'RESPIRASI_label':ceklabelRESPIRASIintoModel(pasien_kriteria.respirasi)}
 
+    print(data)
     # # Create DataFrame.
     df = pd.DataFrame(data)
     result = model.predict(df)
