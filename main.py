@@ -162,17 +162,17 @@ def create_data_kriteria_pasien(pasien_kriteria: Kriteria, db:Session = Depends(
             'RESPIRASI_label':ceklabelRESPIRASIintoModel(pasien_kriteria_model.respirasi)}
 
     return data
-    # # Create DataFrame.
-    df = pd.DataFrame(data)
-    result = model.predict(df)
-    result = result.tolist()
-    result = ceklabelstres(result)
+    # Create DataFrame.
+    # df = pd.DataFrame(data)
+    # result = model.predict(df)
+    # result = result.tolist()
+    # result = ceklabelstres(result)
 
-    pasien_kriteria_model.tingkat_stress = result[0]
+    # pasien_kriteria_model.tingkat_stress = result[0]
 
-    db.add(pasien_kriteria_model)
-    db.commit()
-    return pasien_kriteria_model
+    # db.add(pasien_kriteria_model)
+    # db.commit()
+    # return pasien_kriteria_model
 
 @app.get("/kriteria_pasien/check")
 def check(db:Session = Depends(get_db)):
