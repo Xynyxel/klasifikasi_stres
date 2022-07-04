@@ -177,13 +177,13 @@ def create_data_kriteria_pasien(pasien_kriteria: Kriteria, db:Session = Depends(
 @app.get("/kriteria_pasien/check")
 def check():
 
-    data = {'GSR_label': ceklabelGSRintoModel(3), 
-            'HR_label': ceklabelHRintoModel(70), 
-            'BP_label': ceklabelBPintoModel("110/79"), 
-            'SUHU_label':ceklabelSUHUintoModel(37), 
-            'RESPIRASI_label':ceklabelRESPIRASIintoModel(18)}
+    # data = {'GSR_label': ceklabelGSRintoModel(3), 
+    #         'HR_label': ceklabelHRintoModel(70), 
+    #         'BP_label': ceklabelBPintoModel("110/79"), 
+    #         'SUHU_label':ceklabelSUHUintoModel(37), 
+    #         'RESPIRASI_label':ceklabelRESPIRASIintoModel(18)}
 
-    return data
+    return "Hello World"
 
 
 @app.put("/kriteria_pasien/{kriteria_id}")
