@@ -24,7 +24,7 @@ class Kriteria(Base):
     id_kriteria = Column(Integer, primary_key=True, index=True)
     gsr = Column(Integer)
     hr = Column(Integer)
-    bp = Column(Integer)
+    bp = Column(String)
     suhu = Column(Integer)
     respirasi = Column(Integer)
     tanggal_cek = Column(DateTime, default=datetime.now)

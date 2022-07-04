@@ -150,11 +150,14 @@ def create_data_kriteria_pasien(pasien_kriteria: Kriteria, db:Session = Depends(
     pasien_kriteria_model.respirasi = pasien_kriteria.respirasi
     pasien_kriteria_model.id_pasien = pasien_kriteria.id_pasien
 
-    data = {'GSR_label': [int(pasien_kriteria.gsr)], 
-            'HR_label': [int(pasien_kriteria.hr)], 
-            'BP_label': [int(pasien_kriteria.bp)], 
-            'SUHU_label':[int(pasien_kriteria.suhu)], 
-            'RESPIRASI_label':[int(pasien_kriteria.respirasi)]}
+    
+    
+
+    data = {'GSR_label': ceklabelGSRintoModel(pasien_kriteria.gsr), 
+            'HR_label': ceklabelHRintoModel(pasien_kriteria.hr), 
+            'BP_label': ceklabelBPintoModel(pasien_kriteria.bp), 
+            'SUHU_label':ceklabelSUHUintoModel(pasien_kriteria.suhu), 
+            'RESPIRASI_label':ceklabelRESPIRASIintoModel(pasien_kriteria.respirasi)}
 
     # # Create DataFrame.
     df = pd.DataFrame(data)
