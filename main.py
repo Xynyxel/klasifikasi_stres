@@ -174,6 +174,25 @@ def create_data_kriteria_pasien(pasien_kriteria: Kriteria, db:Session = Depends(
     db.commit()
     return pasien_kriteria_model
 
+@app.get("/kriteria_pasien/check")
+def check(pasien_kriteria: Kriteria, db:Session = Depends(get_db)):
+
+    pasien_kriteria_model = models.Kriteria()
+    pasien_kriteria_model.gsr = 3
+    pasien_kriteria_model.hr = 70
+    pasien_kriteria_model.bp = "110/79"
+    pasien_kriteria_model.suhu = 37
+    pasien_kriteria_model.respirasi = 18
+    pasien_kriteria_model.id_pasien = pasien_kriteria.id_pasien
+
+    data = {'GSR_label': ceklabelGSRintoModel(pasien_kriteria_model.gsr), 
+            'HR_label': ceklabelHRintoModel(pasien_kriteria_model.hr), 
+            'BP_label': ceklabelBPintoModel(pasien_kriteria_model.bp), 
+            'SUHU_label':ceklabelSUHUintoModel(pasien_kriteria_model.suhu), 
+            'RESPIRASI_label':ceklabelRESPIRASIintoModel(pasien_kriteria_model.respirasi)}
+
+    return data
+
 
 @app.put("/kriteria_pasien/{kriteria_id}")
 def update_data_kriteria_pasien(kriteria_id: int, pasien_kriteria: Kriteria, db : Session = Depends(get_db)):
