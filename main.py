@@ -177,19 +177,11 @@ def create_data_kriteria_pasien(pasien_kriteria: Kriteria, db:Session = Depends(
 @app.get("/kriteria_pasien/check")
 def check(db:Session = Depends(get_db)):
 
-    pasien_kriteria_model = models.Kriteria()
-    pasien_kriteria_model.gsr = 3
-    pasien_kriteria_model.hr = 70
-    pasien_kriteria_model.bp = "110/79"
-    pasien_kriteria_model.suhu = 37
-    pasien_kriteria_model.respirasi = 18
-    pasien_kriteria_model.id_pasien = 1
-
-    data = {'GSR_label': ceklabelGSRintoModel(pasien_kriteria_model.gsr), 
-            'HR_label': ceklabelHRintoModel(pasien_kriteria_model.hr), 
-            'BP_label': ceklabelBPintoModel(pasien_kriteria_model.bp), 
-            'SUHU_label':ceklabelSUHUintoModel(pasien_kriteria_model.suhu), 
-            'RESPIRASI_label':ceklabelRESPIRASIintoModel(pasien_kriteria_model.respirasi)}
+    data = {'GSR_label': ceklabelGSRintoModel(3), 
+            'HR_label': ceklabelHRintoModel(70), 
+            'BP_label': ceklabelBPintoModel("110/79"), 
+            'SUHU_label':ceklabelSUHUintoModel(37), 
+            'RESPIRASI_label':ceklabelRESPIRASIintoModel(18)}
 
     return data
 
