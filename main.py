@@ -12,6 +12,10 @@ from database import engine, SessionLocal
 from sqlalchemy.orm import Session
 
 
+# Change format date
+from dateutil import parser
+from datetime import datetime
+
 app = FastAPI()
 
 models.Base.metadata.create_all(bind=engine)
@@ -128,11 +132,9 @@ def get_data_kriteria_pasien_byidpasien_last(pasien_id: int, db: Session = Depen
 @app.get("/kriteria_pasien/{pasien_id}")
 def get_data_kriteria_pasien_byidpasien(pasien_id: int, db: Session = Depends(get_db)):
     kriteria_pasien = db.query(models.Kriteria).filter(models.Kriteria.id_pasien == pasien_id).all()
-    # kriteria_pasien[-1] = kriteria_pasien["tanggal_cek"].strftime("%m/%d/%Y, %H:%M:%S")
-    # for i in kriteria_pasien:
-    #     print(i["tanggal_cek"])
-        # i["tanggal_cek"] = datetime.fromisoformat(i["tanggal_cek"])
-        # i["tanggal_cek"] = i["tanggal_cek"].strftime("%m/%d/%Y, %H:%M:%S")
+    for da in kriteria_pasien:
+        da['tanggal_cek'] = parser.parse(da['tanggal_cek'])
+        da['tanggal_cek']  = da['tanggal_cek'].strftime("%d/%m/%Y %H:%M:%S")
     if kriteria_pasien is None:
         raise HTTPException(
             status_code = 404,
