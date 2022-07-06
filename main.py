@@ -146,7 +146,7 @@ def get_data_kriteria_pasien_byidpasien_last(pasien_id: int, db: Session = Depen
 def get_data_kriteria_pasien_byidpasien(pasien_id: int, db: Session = Depends(get_db)):
     kriteria_pasien = db.query(models.Kriteria).filter(models.Kriteria.id_pasien == pasien_id).all()
     for data in kriteria_pasien:
-        listdata = type(data)
+        print(data)
         # da['tanggal_cek'] = parser.parse(da['tanggal_cek'])
         # da['tanggal_cek']  = da['tanggal_cek'].strftime("%d/%m/%Y %H:%M:%S")
         
@@ -155,7 +155,7 @@ def get_data_kriteria_pasien_byidpasien(pasien_id: int, db: Session = Depends(ge
             status_code = 404,
             detail = f"Kriteria Pasien with id : {pasien_id} : Does not exist"
         )
-    return listdata
+    return kriteria_pasien
 
 @app.post("/kriteria_pasien")
 def create_data_kriteria_pasien(pasien_kriteria: Kriteria, db:Session = Depends(get_db)):
