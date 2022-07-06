@@ -33,7 +33,20 @@ model.load_model("model.json")
 
 @app.get("/hallo")
 def read_root():
-    return {"Hello": "World"}
+    data = [
+        {
+            "gsr": 3,
+            "suhu": 37,
+            "hr": 70,
+            "tanggal_cek": "2022-07-04T16:57:10.414000",
+            "id_pasien": 1,
+            "id_kriteria": 1,
+            "bp": "110/79",
+            "respirasi": 18,
+            "tingkat_stress": "Tenang"
+        },
+    ]
+    return data
 
 @app.get("/test")
 def test(db: Session = Depends(get_db)):
@@ -141,7 +154,7 @@ def get_data_kriteria_pasien_byidpasien(pasien_id: int, db: Session = Depends(ge
             status_code = 404,
             detail = f"Kriteria Pasien with id : {pasien_id} : Does not exist"
         )
-    return kriteria_pasien
+    return kriteria_pasien[0]['tanggal_cek']
 
 @app.post("/kriteria_pasien")
 def create_data_kriteria_pasien(pasien_kriteria: Kriteria, db:Session = Depends(get_db)):
