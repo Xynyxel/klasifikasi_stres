@@ -140,7 +140,7 @@ def get_data_kriteria_pasien_byidpasien(pasien_id: int, db: Session = Depends(ge
             status_code = 404,
             detail = f"Kriteria Pasien with id : {pasien_id} : Does not exist"
         )
-    return kriteria_pasien
+    return kriteria_pasien[0]
 
 @app.post("/kriteria_pasien")
 def create_data_kriteria_pasien(pasien_kriteria: Kriteria, db:Session = Depends(get_db)):
@@ -153,13 +153,6 @@ def create_data_kriteria_pasien(pasien_kriteria: Kriteria, db:Session = Depends(
     pasien_kriteria_model.respirasi = pasien_kriteria.respirasi
     pasien_kriteria_model.id_pasien = pasien_kriteria.id_pasien
     pasien_kriteria_model.tanggal_cek = pasien_kriteria.tanggal_cek
-
-    # pasien_kriteria_model.gsr = 3
-    # pasien_kriteria_model.hr = 70
-    # pasien_kriteria_model.bp = "110/79"
-    # pasien_kriteria_model.suhu = 37
-    # pasien_kriteria_model.respirasi = 18
-    # pasien_kriteria_model.id_pasien = pasien_kriteria.id_pasien
 
     data = {'GSR_label': [ceklabelGSRintoModel(pasien_kriteria_model.gsr)], 
             'HR_label': [ceklabelHRintoModel(pasien_kriteria_model.hr)], 
