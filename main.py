@@ -146,16 +146,16 @@ def get_data_kriteria_pasien_byidpasien_last(pasien_id: int, db: Session = Depen
 @app.get("/kriteria_pasien/{pasien_id}")
 def get_data_kriteria_pasien_byidpasien(pasien_id: int, db: Session = Depends(get_db)):
     kriteria_pasien = db.query(models.Kriteria).filter(models.Kriteria.id_pasien == pasien_id).all()
-    # for data in kriteria_pasien:
-    #     data['tanggal_cek'] = parser.parse(data['tanggal_cek'])
-    #     data['tanggal_cek']  = data['tanggal_cek'].strftime("%d/%m/%Y %H:%M:%S")
+    for data in kriteria_pasien:
+        data.tanggal_cek = parser.parse(data.tanggal_cek)
+        data.tanggal_cek  = data.tanggal_cek.strftime("%d/%m/%Y %H:%M:%S")
         
     if kriteria_pasien is None:
         raise HTTPException(
             status_code = 404,
             detail = f"Kriteria Pasien with id : {pasien_id} : Does not exist"
         )
-    return kriteria_pasien[0].tanggal_cek
+    return kriteria_pasien
 
 @app.post("/kriteria_pasien")
 def create_data_kriteria_pasien(pasien_kriteria: Kriteria, db:Session = Depends(get_db)):
