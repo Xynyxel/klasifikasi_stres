@@ -46,7 +46,7 @@ def read_root():
             "tingkat_stress": "Tenang"
         },
     ]
-    return data[0]['tingkat_stress']
+    return data[0]['tanggal_cek']
 
 @app.get("/test")
 def test(db: Session = Depends(get_db)):
@@ -154,7 +154,7 @@ def get_data_kriteria_pasien_byidpasien(pasien_id: int, db: Session = Depends(ge
             status_code = 404,
             detail = f"Kriteria Pasien with id : {pasien_id} : Does not exist"
         )
-    return kriteria_pasien[0]['tanggal_cek']
+    return kriteria_pasien[0]
 
 @app.post("/kriteria_pasien")
 def create_data_kriteria_pasien(pasien_kriteria: Kriteria, db:Session = Depends(get_db)):
