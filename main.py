@@ -46,7 +46,7 @@ def read_root():
             "tingkat_stress": "Tenang"
         },
     ]
-    return data
+    return data[0]['tingkat_stress']
 
 @app.get("/test")
 def test(db: Session = Depends(get_db)):
