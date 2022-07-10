@@ -101,7 +101,7 @@ def update_data_pasien(pasien_id: int, pasien: Pasien, db : Session = Depends(ge
     db.commit()
     return f"Pasien with id : {pasien_id} : Successfuly updated"
 
-@app.put("/{pasien_id}")
+@app.put("password/{pasien_id}")
 def update_data_password_pasien(pasien_id: int, pasien: Pasien, db : Session = Depends(get_db)):
     pasien_model = db.query(models.Pasien).filter(models.Pasien.id_pasien == pasien_id).first()
     if pasien_model is None :
