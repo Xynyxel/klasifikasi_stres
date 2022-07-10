@@ -32,8 +32,8 @@ class Kriteria(BaseModel):
     class Config:
         orm_mode = True
 
-class Pasien_Name(BaseModel):
-    name: str
+class Pasien_Password(BaseModel):
+    password: str
 
     class Config:
         orm_mode = True
