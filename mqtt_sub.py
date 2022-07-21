@@ -65,7 +65,7 @@ def on_message(client, userdata, message):
     # if message.topic == 'deteksi/gsr':
     #     with open('/home/mqtt_update.txt', 'a+') as f:
     #         f.write(data)
-    print(data)
+    print(message.topic+ ": "+message.payload.decode())
     if message.topic == 'deteksi/gsr':
         response = requests.get("http://139.59.236.46/")
         print(response.json())
