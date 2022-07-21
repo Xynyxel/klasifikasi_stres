@@ -36,6 +36,15 @@ import paho.mqtt.client as mqtt
 import time
 import requests
 
+data_json = {
+  "gsr": 0,
+  "hr": 0,
+  "bp": "",
+  "suhu": 0,
+  "respirasi": 0,
+  "tanggal_cek": "",
+  "id_pasien": 0
+}
 
 # def write_data(data):
 #     with open('test.txt', 'w', encoding='utf-8') as f:
@@ -59,18 +68,16 @@ def on_connect(client, userdata, flags, rc):
 
 def on_message(client, userdata, message):
     data = str(message.payload.decode())
-    # print(msg.topic + ": " + data)
-    # write_data(data)
-    # print("Message received: " + message.topic + " : " + str(message.payload))
-    # 
-
+    print(message.topic+ ": "+message.payload.decode())
+    print(data_json)
+    
     # if message.topic == 'deteksi/gsr':
     #     with open('/home/mqtt_update.txt', 'a+') as f:
     #         f.write(data)
-    if message.topic == 'deteksi/tanggal_cek':
-        print(message.topic+ ": "+message.payload.decode().strftime("%m/%d/%Y %H:%M:%S"))
-    if message.topic == 'deteksi/gsr':
-        response = requests.get("http://139.59.236.46/")
+    # if message.topic == 'deteksi/tanggal_cek':
+    #     
+    # if message.topic == 'deteksi/gsr':
+    #     response = requests.get("http://139.59.236.46/")
         # print(response.json())
     # if message.topic == 'deteksi/hr':
     # if message.topic == 'deteksi/bp':
