@@ -49,6 +49,12 @@ def on_connect(client, userdata, flags, rc):
     # reconnect then subscriptions will be renewed.
     # client.subscribe([("ep_mqtt/test", 1), ("ep_mqtt/topic2", 1), ("ep_mqtt/topic3", 1)])
     client.subscribe("deteksi/gsr")
+    client.subscribe("deteksi/hr")
+    client.subscribe("deteksi/bp")
+    client.subscribe("deteksi/suhu")
+    client.subscribe("deteksi/respirasi")
+    client.subscribe("deteksi/tanggal_cek")
+    client.subscribe("deteksi/id_pasien")
 
 
 def on_message(client, userdata, message):
@@ -56,11 +62,7 @@ def on_message(client, userdata, message):
     # print(msg.topic + ": " + data)
     # write_data(data)
     # print("Message received: " + message.topic + " : " + str(message.payload))
-    # client.publish("deteksi/gsr", "3", 0)
-    # client.publish("deteksi/hr", "60", 0)
-    # client.publish("deteksi/bp", "100/70", 0)
-    # client.publish("deteksi/suhu", "36", 0)
-    # client.publish("deteksi/respirasi", "16", 0)
+    # 
 
     # if message.topic == 'deteksi/gsr':
     #     with open('/home/mqtt_update.txt', 'a+') as f:

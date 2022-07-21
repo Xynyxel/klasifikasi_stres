@@ -1,5 +1,6 @@
 import paho.mqtt.client as paho
 import sys
+from datetime import datetime
 
 client = paho.Client()
 
@@ -9,11 +10,15 @@ if client.connect("139.59.236.46", 1883, 60) != 0:
 else:
     print("MQTT Broker! berhasil connect")
 
+tanggalcek = datetime.utcnow()
+
 
 client.publish("deteksi/gsr", "3", 0)
 client.publish("deteksi/hr", "60", 0)
 client.publish("deteksi/bp", "100/70", 0)
 client.publish("deteksi/suhu", "36", 0)
 client.publish("deteksi/respirasi", "16", 0)
+client.publish("deteksi/tanggal_cek", tanggalcek, 0)
+client.publish("deteksi/id_pasien", "1", 0)
 
 client.disconnect()
