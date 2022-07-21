@@ -93,8 +93,8 @@ def on_message(client, userdata, message):
     if message.topic == 'deteksi/id_pasien': 
         data_json['id_pasien'] = int(message.payload.decode())
                         
-        datajson = json.dumps(data_json)
-        print(datajson['gsr'])   
+        # datajson = json.dumps(data_json)
+        print(data_json['gsr'])   
         url = 'http://139.59.236.46/kriteria_pasien'
         header = {"charset": "utf-8", "Content-Type": "application/json"}
         response = requests.post(url, json = datajson, headers=header)
