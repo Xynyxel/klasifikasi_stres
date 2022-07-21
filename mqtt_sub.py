@@ -34,6 +34,7 @@
 
 import paho.mqtt.client as mqtt
 import time
+import requests
 
 
 # def write_data(data):
@@ -55,9 +56,22 @@ def on_message(client, userdata, message):
     # print(msg.topic + ": " + data)
     # write_data(data)
     # print("Message received: " + message.topic + " : " + str(message.payload))
-    if message.topic == 'test/test':
-        with open('/home/mqtt_update.txt', 'a+') as f:
-            f.write(data)
+    client.publish("deteksi/gsr", "3", 0)
+    client.publish("deteksi/hr", "60", 0)
+    client.publish("deteksi/bp", "100/70", 0)
+    client.publish("deteksi/suhu", "36", 0)
+    client.publish("deteksi/respirasi", "16", 0)
+
+    # if message.topic == 'deteksi/gsr':
+    #     with open('/home/mqtt_update.txt', 'a+') as f:
+    #         f.write(data)
+    if message.topic == 'deteksi/gsr':
+        response = requests.get("http://139.59.236.46/")
+        print(response)
+    # if message.topic == 'deteksi/hr':
+    # if message.topic == 'deteksi/bp':
+    # if message.topic == 'deteksi/suhu':
+    # if message.topic == 'deteksi/respirasi':                    
 
 
 broker_address = "139.59.236.46"  # Broker address

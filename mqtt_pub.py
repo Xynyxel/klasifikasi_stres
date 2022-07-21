@@ -10,6 +10,10 @@ else:
     print("MQTT Broker! berhasil connect")
 
 
-client.publish("test/test", "test111", 0)
+client.publish("deteksi/gsr", "3", 0)
+client.publish("deteksi/hr", "60", 0)
+client.publish("deteksi/bp", "100/70", 0)
+client.publish("deteksi/suhu", "36", 0)
+client.publish("deteksi/respirasi", "16", 0)
 
 client.disconnect()
