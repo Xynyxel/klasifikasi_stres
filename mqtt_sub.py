@@ -94,7 +94,7 @@ def on_message(client, userdata, message):
         data_json['id_pasien'] = int(message.payload.decode())
                         
         datajson = json.dumps(data_json)
-        print("datajson : "+datajson['gsr'])   
+        print("datajson : "+datajson['bp'])   
         url = 'http://139.59.236.46/kriteria_pasien'
         header = {"charset": "utf-8", "Content-Type": "application/json"}
         response = requests.post(url, json = datajson, headers=header)
