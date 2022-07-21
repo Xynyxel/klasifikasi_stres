@@ -69,7 +69,7 @@ def on_connect(client, userdata, flags, rc):
 def on_message(client, userdata, message):
     data = str(message.payload.decode())
     print(message.topic+ ": "+message.payload.decode())
-    print(data_json)
+    
     
     # if message.topic == 'deteksi/gsr':
     #     with open('/home/mqtt_update.txt', 'a+') as f:
@@ -94,6 +94,7 @@ client = mqtt.Client()  # create new instance
 # client.username_pw_set(user, password=password)    #set username and password
 client.on_connect = on_connect  # attach function to callback
 client.on_message = on_message  # attach function to callback
+print(data_json)
 
 client.connect(broker_address, port=port)  # connect to broker
 
