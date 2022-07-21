@@ -68,7 +68,7 @@ def on_message(client, userdata, message):
     print(message.topic+ ": "+message.payload.decode())
     if message.topic == 'deteksi/gsr':
         response = requests.get("http://139.59.236.46/")
-        print(response.json())
+        # print(response.json())
     # if message.topic == 'deteksi/hr':
     # if message.topic == 'deteksi/bp':
     # if message.topic == 'deteksi/suhu':
