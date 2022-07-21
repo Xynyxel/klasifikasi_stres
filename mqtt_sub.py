@@ -88,7 +88,7 @@ def on_message(client, userdata, message):
     if message.topic == 'deteksi/respirasi':
         data_json['respirasi'] = int(message.payload.decode())
     if message.topic == 'deteksi/tanggal_cek':
-        data_json['tanggal_cek'] = datetime.strptime(message.payload.decode(), "%d/%m/%Y %H:%M:%S")
+        data_json['tanggal_cek'] = datetime.datetime.strptime(message.payload.decode(), "%d/%m/%Y %H:%M:%S")
     if message.topic == 'deteksi/id_pasien': 
         data_json['id_pasien'] = int(message.payload.decode())
         print(data_json)                   
