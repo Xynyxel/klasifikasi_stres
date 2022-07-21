@@ -92,11 +92,12 @@ def on_message(client, userdata, message):
         data_json['tanggal_cek'] = message.payload.decode()
     if message.topic == 'deteksi/id_pasien': 
         data_json['id_pasien'] = int(message.payload.decode())
-        print(data_json)                   
-
+                        
+        datajson = json.dumps(data_json)
+        print(datajson)   
         url = 'http://139.59.236.46/kriteria_pasien'
         header = {'Content-Type': 'application/json; charset=UTF-8'}
-        response = requests.post(url, json = json.dumps(data_json), headers=header)
+        response = requests.post(url, json = datajson, headers=header)
 
         print(response.json())
 
