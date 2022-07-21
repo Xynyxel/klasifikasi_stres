@@ -36,6 +36,7 @@ import paho.mqtt.client as mqtt
 import time
 import requests
 import datetime
+import json
 
 data_json = {
   "gsr": 0,
@@ -95,7 +96,7 @@ def on_message(client, userdata, message):
 
         url = 'http://139.59.236.46/kriteria_pasien'
 
-        response = requests.post(url, json = data_json)
+        response = requests.post(url, json = json.dumps(data_json))
 
         print(response.text)
 
