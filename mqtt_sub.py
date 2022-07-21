@@ -95,6 +95,7 @@ def on_message(client, userdata, message):
                         
         # datajson = json.dumps(data_json)
         data_json['tanggal_cek'] = datetime.strptime(data_json['tanggal_cek'], "%d/%m/%Y %H:%M:%S") 
+        print(data_json)
         url = 'http://139.59.236.46/kriteria_pasien'
         header = {"charset": "utf-8", "Content-Type": "application/json"}
         response = requests.post(url, json = data_json, headers=header)
