@@ -98,7 +98,7 @@ def on_message(client, userdata, message):
         header = {'Content-Type': 'application/json; charset=UTF-8'}
         response = requests.post(url, json = json.dumps(data_json), headers=header)
 
-        print(response.text)
+        print(response.json())
 
 
 broker_address = "139.59.236.46"  # Broker address
