@@ -35,6 +35,7 @@
 import paho.mqtt.client as mqtt
 import time
 import requests
+import datetime
 
 data_json = {
   "gsr": 0,
@@ -67,7 +68,7 @@ def on_connect(client, userdata, flags, rc):
 
 
 def on_message(client, userdata, message):
-    data = str(message.payload.decode())
+    # data = str(message.payload.decode())
     print(message.topic+ ": "+message.payload.decode())
     
     
@@ -76,13 +77,21 @@ def on_message(client, userdata, message):
     #         f.write(data)
     # if message.topic == 'deteksi/tanggal_cek':
     #     
-    # if message.topic == 'deteksi/gsr':
-    #     response = requests.get("http://139.59.236.46/")
-        # print(response.json())
-    # if message.topic == 'deteksi/hr':
-    # if message.topic == 'deteksi/bp':
-    # if message.topic == 'deteksi/suhu':
-    # if message.topic == 'deteksi/respirasi':                    
+    if message.topic == 'deteksi/gsr':
+        data_json['gsr'] = int(message.payload.decode())
+    if message.topic == 'deteksi/hr':
+        data_json['hr'] = int(message.payload.decode())
+    if message.topic == 'deteksi/bp':
+        data_json['bp'] = message.payload.decode()
+    if message.topic == 'deteksi/suhu':
+        data_json['suhu'] = int(message.payload.decode())
+    if message.topic == 'deteksi/respirasi':
+        data_json['respirasi'] = int(message.payload.decode())
+    if message.topic == 'deteksi/tanggal_cek':
+        data_json['tanggal_cek'] = datetime.strptime(message.payload.decode(), "%d/%m/%Y %H:%M:%S")
+    if message.topic == 'deteksi/id_pasien': 
+        data_json['id_pasien'] = int(message.payload.decode())
+        print(data_json)                   
 
 
 broker_address = "139.59.236.46"  # Broker address
@@ -94,7 +103,7 @@ client = mqtt.Client()  # create new instance
 # client.username_pw_set(user, password=password)    #set username and password
 client.on_connect = on_connect  # attach function to callback
 client.on_message = on_message  # attach function to callback
-print(data_json)
+
 
 client.connect(broker_address, port=port)  # connect to broker
 
