@@ -95,8 +95,8 @@ def on_message(client, userdata, message):
         print(data_json)                   
 
         url = 'http://139.59.236.46/kriteria_pasien'
-
-        response = requests.post(url, json = json.dumps(data_json))
+        header = {'Content-Type': 'application/json; charset=UTF-8'}
+        response = requests.post(url, json = json.dumps(data_json), headers=header)
 
         print(response.text)
 
