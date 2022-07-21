@@ -93,6 +93,12 @@ def on_message(client, userdata, message):
         data_json['id_pasien'] = int(message.payload.decode())
         print(data_json)                   
 
+        url = 'http://139.59.236.46/kriteria_pasien'
+
+        response = requests.post(url, json = data_json)
+
+        print(response.text)
+
 
 broker_address = "139.59.236.46"  # Broker address
 port = 1883  # Broker port
