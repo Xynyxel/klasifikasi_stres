@@ -11,6 +11,7 @@ else:
     print("MQTT Broker! berhasil connect")
 
 tanggalcek = datetime.utcnow()
+tanggalcek = datetime.datetime.strptime(tanggalcek, '%Y-%m-%d %H:%M:%S.%f')
 
 
 client.publish("deteksi/gsr", "3", 0)
