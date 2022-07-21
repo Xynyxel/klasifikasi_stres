@@ -48,7 +48,7 @@ def on_connect(client, userdata, flags, rc):
     # Subscribing in on_connect() means that if we lose the connection and
     # reconnect then subscriptions will be renewed.
     # client.subscribe([("ep_mqtt/test", 1), ("ep_mqtt/topic2", 1), ("ep_mqtt/topic3", 1)])
-    client.subscribe("test/test")
+    client.subscribe("deteksi/gsr")
 
 
 def on_message(client, userdata, message):
