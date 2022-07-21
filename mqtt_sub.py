@@ -35,7 +35,7 @@
 import paho.mqtt.client as mqtt
 import time
 import requests
-import datetime
+from datetime import datetime
 import json
 
 data_json = {
