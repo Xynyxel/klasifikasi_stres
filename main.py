@@ -186,10 +186,7 @@ def create_data_kriteria_pasien(pasien_kriteria: Kriteria, db:Session = Depends(
     result = result.tolist()
     result = ceklabelstres(result)
    
-    pasien_kriteria_model.tingkat_stress = result[0]
-
-    db.add(pasien_kriteria_model)
-    db.commit()
+     
     return f"Kriteria Pasien with id : {pasien_kriteria_model.id_pasien} : Successfuly added"
 
 

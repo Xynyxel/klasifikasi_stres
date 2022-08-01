@@ -1,8 +1,8 @@
 import paho.mqtt.client as mqtt
-import time
+# import time
 import requests
 from datetime import datetime
-import json
+# import json
 
 data_json = {
   "gsr": 0,
@@ -57,13 +57,10 @@ def on_message(client, userdata, message):
 
 broker_address = "139.59.236.46"  # Broker address
 port = 1883  # Broker port
-# user = "yourUser"                    #Connection username
-# password = "yourPassword"            #Connection password
 
 client = mqtt.Client()  # create new instance
-# client.username_pw_set(user, password=password)    #set username and password
-client.on_connect = on_connect  # attach function to callback
-client.on_message = on_message  # attach function to callback
+client.on_connect = on_connect  
+client.on_message = on_message  
 
 
 client.connect(broker_address, port=port)  # connect to broker

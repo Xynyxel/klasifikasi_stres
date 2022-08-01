@@ -13,7 +13,7 @@ else:
 tanggalcek = datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S")
 
 
-client.publish("deteksi/gsr", "3", 0)
+client.publish("deteksi/gsr", "4", 0)
 client.publish("deteksi/hr", "60", 0)
 client.publish("deteksi/bp", "100/70", 0)
 client.publish("deteksi/suhu", "36", 0)
