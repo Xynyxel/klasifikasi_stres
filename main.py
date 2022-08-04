@@ -133,7 +133,9 @@ def delete_data_pasien(pasien_id: int, db: Session = Depends(get_db)):
 
 @app.get("/kriteria_pasien")
 def get_data_kriteria_pasien(db: Session = Depends(get_db)):
-    records = db.query(models.Kriteria.id_pasien, models.Pasien.name).join(models.Pasien, models.Pasien.id_pasien == models.Kriteria.id_pasien).first()
+    records = db.query(models.Kriteria.id_pasien, models.Pasien.name, models.Pasien.email, models.Pasien.password,
+    models.Kriteria.id_kriteria, models.Kriteria.bp, models.Kriteria.gsr, models.Kriteria.hr,
+    models.Kriteria.suhu, models.Kriteria.respirasi, models.Kriteria.tanggal_cek, models.Kriteria.tingkat_stress).join(models.Pasien, models.Pasien.id_pasien == models.Kriteria.id_pasien).first()
     # Loop through results
     # for record in records:
     #     for pasien in record.id_pasien:
