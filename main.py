@@ -133,7 +133,7 @@ def delete_data_pasien(pasien_id: int, db: Session = Depends(get_db)):
 
 @app.get("/kriteria_pasien")
 def get_data_kriteria_pasien(db: Session = Depends(get_db)):
-    records = db.query(models.Kriteria).join(models.Pasien, models.Pasien.id_pasien == models.Kriteria.id_pasien).all()
+    records = db.query(models.Kriteria).join(models.Pasien, models.Pasien.id_pasien == models.Kriteria.id_pasien).first()
     # Loop through results
     # for record in records:
     #     for pasien in record.id_pasien:
