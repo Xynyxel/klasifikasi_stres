@@ -17,18 +17,21 @@ data_json = {
 def on_connect(client, userdata, flags, rc):
     print("Connected with result code " + str(rc))
 
-    client.subscribe("deteksi/gsr")
-    client.subscribe("deteksi/hr")
-    client.subscribe("deteksi/bp")
-    client.subscribe("deteksi/suhu")
-    client.subscribe("deteksi/respirasi")
-    client.subscribe("deteksi/tanggal_cek")
-    client.subscribe("deteksi/id_pasien")
+    # client.subscribe("deteksi/gsr")
+    # client.subscribe("deteksi/hr")
+    # client.subscribe("deteksi/bp")
+    # client.subscribe("deteksi/suhu")
+    # client.subscribe("deteksi/respirasi")
+    # client.subscribe("deteksi/tanggal_cek")
+    # client.subscribe("deteksi/id_pasien")
+    client.subscribe("deteksi/test")
 
 
 def on_message(client, userdata, message):
     print(message.topic+ ": "+message.payload.decode())
     
+    if message.topic == 'deteksi/test':
+        print('Hello Tony Kamu berhasil'+message.payload.decode())
     
     if message.topic == 'deteksi/gsr':
         data_json['gsr'] = int(message.payload.decode())
