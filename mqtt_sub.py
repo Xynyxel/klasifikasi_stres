@@ -54,7 +54,7 @@ def on_message(client, userdata, message):
 
         if(response.status_code == 200):
             print("response berhasil")
-        # print(response.json())
+        print(response.json())
 
 
 broker_address = "139.59.236.46"  # Broker address
