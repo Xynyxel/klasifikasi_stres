@@ -4,7 +4,7 @@ from datetime import datetime
 
 client = paho.Client()
 
-if client.connect("20.163.38.64", 1883, 60) != 0:
+if client.connect("139.59.236.46", 1883, 60) != 0:
     print("Could not connect to MQTT Broker!")
     sys.exit(-1)
 else:
