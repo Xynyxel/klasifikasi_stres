@@ -13,13 +13,13 @@ else:
 tanggalcek = datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S")
 
 
-# client.publish("deteksi/gsr", "4", 0)
-# client.publish("deteksi/hr", "60", 0)
-# client.publish("deteksi/bp", "100/70", 0)
-# client.publish("deteksi/suhu", "36", 0)
-# client.publish("deteksi/respirasi", "16", 0)
-# client.publish("deteksi/tanggal_cek", tanggalcek, 0)
-# client.publish("deteksi/id_pasien", "1", 0)
-client.publish("deteksi/test", "testing", 0)
+client.publish("deteksi/gsr", "4", 0)
+client.publish("deteksi/hr", "60", 0)
+client.publish("deteksi/bp", "100/70", 0)
+client.publish("deteksi/suhu", "36", 0)
+client.publish("deteksi/respirasi", "16", 0)
+client.publish("deteksi/tanggal_cek", tanggalcek, 0)
+client.publish("deteksi/id_pasien", "1", 0)
+# client.publish("deteksi/test", "testing", 0)
 
 client.disconnect()

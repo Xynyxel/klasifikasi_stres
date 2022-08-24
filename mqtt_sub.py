@@ -17,14 +17,13 @@ data_json = {
 def on_connect(client, userdata, flags, rc):
     print("Connected with result code " + str(rc))
 
-    # client.subscribe("deteksi/gsr")
-    # client.subscribe("deteksi/hr")
-    # client.subscribe("deteksi/bp")
-    # client.subscribe("deteksi/suhu")
-    # client.subscribe("deteksi/respirasi")
-    # client.subscribe("deteksi/tanggal_cek")
-    # client.subscribe("deteksi/id_pasien")
-    client.subscribe("deteksi/test")
+    client.subscribe("deteksi/gsr")
+    client.subscribe("deteksi/hr")
+    client.subscribe("deteksi/bp")
+    client.subscribe("deteksi/suhu")
+    client.subscribe("deteksi/respirasi")
+    client.subscribe("deteksi/tanggal_cek")
+    client.subscribe("deteksi/id_pasien")
 
 
 def on_message(client, userdata, message):
