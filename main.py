@@ -1,3 +1,4 @@
+from tokenize import String
 from fastapi import FastAPI, HTTPException, Depends
 
 import xgboost as xgb
@@ -194,10 +195,12 @@ def create_data_kriteria_pasien(pasien_kriteria: Kriteria, db:Session = Depends(
     result = ceklabelstres(result)
 
     pasien_kriteria_model.tingkat_stress = result[0]
+
+    print(pasien_kriteria_model)
    
     db.add(pasien_kriteria_model)
     db.commit()
-    
+
     return f"Kriteria Pasien with id : {pasien_kriteria_model.id_pasien} : Successfuly added"
 
 
@@ -234,5 +237,10 @@ def delete_data_kriteria_pasien(kriteria_id: int, db: Session = Depends(get_db))
     db.commit()
     return f"Kriteria Pasien with id : {kriteria_id} deleted"
 
+
+@app.get("/id_pasien/{nama_pasien}")
+def get_id_pasien_byid(nama_pasien: String, db: Session = Depends(get_db)):
+    return db.query(models.Pasien).filter(models.Pasien.name == nama_pasien).first()
+    
 
 
