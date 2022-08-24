@@ -33,32 +33,32 @@ def get_db():
 model = xgb.XGBClassifier()
 model.load_model("model.json")
 
-@app.get("/hallo")
-def read_root():
-    data = [
-        {
-            "gsr": 3,
-            "suhu": 37,
-            "hr": 70,
-            "tanggal_cek": "2022-07-04T16:57:10.414000",
-            "id_pasien": 1,
-            "id_kriteria": 1,
-            "bp": "110/79",
-            "respirasi": 18,
-            "tingkat_stress": "Tenang"
-        },
-    ]
-    return data[0]['tanggal_cek']
+# @app.get("/hallo")
+# def read_root():
+#     data = [
+#         {
+#             "gsr": 3,
+#             "suhu": 37,
+#             "hr": 70,
+#             "tanggal_cek": "2022-07-04T16:57:10.414000",
+#             "id_pasien": 1,
+#             "id_kriteria": 1,
+#             "bp": "110/79",
+#             "respirasi": 18,
+#             "tingkat_stress": "Tenang"
+#         },
+#     ]
+#     return data[0]['tanggal_cek']
 
-@app.get("/test")
-def test(db: Session = Depends(get_db)):
-    data = {'GSR_label': [2], 'HR_label': [2], 'BP_label': [2], 'SUHU_label':[2], 'RESPIRASI_label':[2]}
-    # # Create DataFrame.
-    df = pd.DataFrame(data)
-    result = model.predict(df)
-    result = result.tolist()
-    result = ceklabelstres(result)
-    return result
+# @app.get("/test")
+# def test(db: Session = Depends(get_db)):
+#     data = {'GSR_label': [2], 'HR_label': [2], 'BP_label': [2], 'SUHU_label':[2], 'RESPIRASI_label':[2]}
+#     # # Create DataFrame.
+#     df = pd.DataFrame(data)
+#     result = model.predict(df)
+#     result = result.tolist()
+#     result = ceklabelstres(result)
+#     return result
 
 @app.get("/")
 def get_data_pasien(db: Session = Depends(get_db)):
