@@ -238,9 +238,9 @@ def delete_data_kriteria_pasien(kriteria_id: int, db: Session = Depends(get_db))
     return f"Kriteria Pasien with id : {kriteria_id} deleted"
 
 
-# @app.get("/id_pasien/{nama_pasien}")
-# def get_id_pasien_byid(nama_pasien: String, db: Session = Depends(get_db)):
-#     return db.query(models.Pasien).filter(models.Pasien.name == nama_pasien).first()
+@app.get("/id_pasien/{nama_pasien}")
+def get_id_pasien_byid(nama_pasien: str, db: Session = Depends(get_db)):
+    return db.query(models.Pasien).filter(models.Pasien.name == nama_pasien).first()
     
 
 
