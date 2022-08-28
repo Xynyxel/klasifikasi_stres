@@ -219,6 +219,21 @@ def update_data_kriteria_pasien(kriteria_id: int, pasien_kriteria: Kriteria, db 
     pasien_kriteria_model.respirasi = pasien_kriteria.respirasi
     pasien_kriteria_model.id_pasien = pasien_kriteria.id_pasien
     pasien_kriteria_model.tanggal_cek = pasien_kriteria.tanggal_cek
+
+    data = {'GSR_label': [ceklabelGSRintoModel(pasien_kriteria_model.gsr)], 
+            'HR_label': [ceklabelHRintoModel(pasien_kriteria_model.hr)], 
+            'BP_label': [ceklabelBPintoModel(pasien_kriteria_model.bp)], 
+            'SUHU_label':[ceklabelSUHUintoModel(pasien_kriteria_model.suhu)], 
+            'RESPIRASI_label':[ceklabelRESPIRASIintoModel(pasien_kriteria_model.respirasi)]}
+
+    # Create DataFrame.
+    df = pd.DataFrame(data)
+    result = model.predict(df)
+    result = result.tolist()
+    result = ceklabelstres(result)
+
+    pasien_kriteria_model.tingkat_stress = result[0]
+
     db.add(pasien_kriteria_model)
     db.commit()
     return f"Kriteria Pasien with id : {kriteria_id} : Successfuly updated"
